@@ -1,33 +1,26 @@
-Untitled
+R para Diplomatas
 ================
 
-## GitHub Documents
+Repositório de materiais, exercícios e referências do curso R para
+Diplomatas.
 
-This is an R Markdown format used for publishing markdown documents to
-GitHub. When you click the **Knit** button all R code chunks are run and
-a markdown file (.md) suitable for publishing to GitHub is generated.
+## Ementa do Curso
 
-## Including Code
+| Semana | Aula                                      | Slides   | Exercícios |
+| ------ | ----------------------------------------- | -------- | ---------- |
+| 1      | Introdução e Primeira Visualização        | material | Exercicios |
+| 2      | Transformação de Dados I                  | material | Exercicios |
+| 3      | Transformação de Dados II                 | material | Exercicios |
+| 4      | Tabelas, Strings e Datas                  | material | Exercicios |
+| 5      | Construindo Relatórios                    | material | Exercicios |
+| 6      | Webscraping, Programação Funcional e além | material | Exercicios |
 
-You can include R code in the document as follows:
+## Materiais de Referência
 
-``` r
-summary(cars)
-```
-
-    ##      speed           dist       
-    ##  Min.   : 4.0   Min.   :  2.00  
-    ##  1st Qu.:12.0   1st Qu.: 26.00  
-    ##  Median :15.0   Median : 36.00  
-    ##  Mean   :15.4   Mean   : 42.98  
-    ##  3rd Qu.:19.0   3rd Qu.: 56.00  
-    ##  Max.   :25.0   Max.   :120.00
-
-## Including Plots
-
-You can also embed plots, for example:
-
-![](index_files/figure-gfm/pressure-1.png)<!-- -->
-
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.
+  - [R for Data Science](https://r4ds.had.co.nz/)
+  - [Ciência de Dados em R](https://livro.curso-r.com/)
+  - [O Zen do R](https://curso-r.github.io/zen-do-r/index.html)
+  - [RStudio Cheat Sheets](https://rstudio.com/resources/cheatsheets/)
+  - [Data Visualization, a Pratical Introduction](https://socviz.co/)
+  - [Hands on Programming with
+    R](https://rstudio-education.github.io/hopr/)
