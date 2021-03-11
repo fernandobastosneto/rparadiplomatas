@@ -6,14 +6,14 @@ Diplomatas.
 
 ## Ementa do Curso
 
-| Semana      | Aula                                      | Slides   | Exercícios |
-| ----------- | ----------------------------------------- | -------- | ---------- |
-| 12 de março | Introdução e Primeira Visualização        | material | Exercicios |
-| 19 de março | Transformação de Dados I                  | material | Exercicios |
-| 26 de março | Transformação de Dados II                 | material | Exercicios |
-| 9 de abril  | Tabelas, Strings e Datas                  | material | Exercicios |
-| 16 de abril | Construindo Relatórios                    | material | Exercicios |
-| 23 de abril | Webscraping, Programação Funcional e além | material | Exercicios |
+| Semana      | Aula                                      | Slides | Exercícios                                                                                 |
+| ----------- | ----------------------------------------- | ------ | ------------------------------------------------------------------------------------------ |
+| 12 de março | Introdução e Primeira Visualização        | slides | [material](https://github.com/fernandobastosneto/rparadiplomatas_aula1/archive/master.zip) |
+| 19 de março | Transformação de Dados I                  | slides | material                                                                                   |
+| 26 de março | Transformação de Dados II                 | slides | material                                                                                   |
+| 9 de abril  | Tabelas, Strings e Datas                  | slides | material                                                                                   |
+| 16 de abril | Construindo Relatórios                    | slides | material                                                                                   |
+| 23 de abril | Webscraping, Programação Funcional e além | slides | material                                                                                   |
 
 ## Materiais de Referência
 
