@@ -6,14 +6,14 @@ Diplomatas.
 
 ## Ementa do Curso
 
-| Semana | Aula                                      | Slides   | Exercícios |
-| ------ | ----------------------------------------- | -------- | ---------- |
-| 1      | Introdução e Primeira Visualização        | material | Exercicios |
-| 2      | Transformação de Dados I                  | material | Exercicios |
-| 3      | Transformação de Dados II                 | material | Exercicios |
-| 4      | Tabelas, Strings e Datas                  | material | Exercicios |
-| 5      | Construindo Relatórios                    | material | Exercicios |
-| 6      | Webscraping, Programação Funcional e além | material | Exercicios |
+| Semana      | Aula                                      | Slides   | Exercícios |
+| ----------- | ----------------------------------------- | -------- | ---------- |
+| 12 de março | Introdução e Primeira Visualização        | material | Exercicios |
+| 19 de março | Transformação de Dados I                  | material | Exercicios |
+| 26 de março | Transformação de Dados II                 | material | Exercicios |
+| 9 de abril  | Tabelas, Strings e Datas                  | material | Exercicios |
+| 16 de abril | Construindo Relatórios                    | material | Exercicios |
+| 23 de abril | Webscraping, Programação Funcional e além | material | Exercicios |
 
 ## Materiais de Referência
 
@@ -24,3 +24,4 @@ Diplomatas.
   - [Data Visualization, a Pratical Introduction](https://socviz.co/)
   - [Hands on Programming with
     R](https://rstudio-education.github.io/hopr/)
+  - [Swirl](https://swirlstats.com/students.html)

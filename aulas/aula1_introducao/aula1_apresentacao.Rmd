@@ -1,23 +1,22 @@
 ---
 title: "r4diplomats"
-subtitle: "aula 1, introdução"
+subtitle: "aula 1, introdução e primeira visualização"
 author: "Fernando Bastos"
 institute: "Ministério das Relações Exteriores"
-date: "2021/01/09 (updated: `r Sys.Date()`)"
+date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
-    lib_dir: libs
+    seal: false
+    anchor_sections: false
+    css: images/default.css
     nature:
-      
-      
-      highlightStyle: github
+      highlightStyle: atom-one-light
+      # slideNumberFormat: "%current&"
       highlightLines: true
       countIncrementalSlides: false
 editor_options: 
   chunk_output_type: console
 ---
-
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
 
 ```{r setup, include=FALSE}
 library(magrittr)
@@ -26,11 +25,7 @@ library(tidyverse)
 options(htmltools.dir.version = FALSE)
 ```
 
-???
-
-Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sharingan_triple.svg)
-
----
+class: center, middle
 
 # O que será ensinado?
 
@@ -38,23 +33,26 @@ Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sharin
 
 - Um fragmento da Ciência de Dados. Como lidar com dados a partir de princípios da programação.
 
----
-
 # O que não será ensinado?
 
 - Cálculo, álgebra linear, probabilidade, estatística... todos esses conceitos são fundamentais para a ciência de dados mas não serão abordados nesse curso.
 - O curso terá foco no uso de ferramentas simples, intuitivas (nem sempre) com impacto imediato mesmo para os que, como eu, são completamente ignorantes em matemática.
 
----
+- Aula dividida em quatro partes
 
-## Um diplomata deve aprender a programar?
+1. Por que programar 
+2. Básico do R
+3. O tidyverse e conceitos básicos do dialeto
+4. ggplot2
+
+---
+class: center, middle
+
+## Todo diplomata deve aprender a programar?
 
 --
 
 .center[![no](https://media4.giphy.com/media/TfS8MAR9ucLHW/giphy.gif)]
---
-
-- Porém...
 
 ---
 class: inverse
@@ -70,7 +68,123 @@ class: inverse
 1. programar não é obrigatório, mas ajuda.
 2. em terra de cego quem tem um olho é rei.
 3. abertura de inúmeras possibilidades.
+4. Alfabetismo mínimo digital.
 
+- pra mim, um mínimo de conhecimento a respeito de computadores é uma questão mínima de cidadania. assim como é fundamental pra cidadania saber cozinhar, dominar os materiais para limpar a casa... do mesmo jeito que é fundamental entender o modo do funcionamento dos Estados, das instituições, também é fundamental entender um mínimo do funcionamento de computadores. Mal não faz.
+
+# política pública baseada em evidências
+
+1. a gramática do Estado moderno é baseada na racionalidade.
+2. a racionalidade atual precisa ser traduzida para a linguagem dos dados. É assim que o TCU pensa. Muitas vezes é assim que o próprio congresso pensa, às vezes num tipo de raciocínio simplório. 
+3. não basta simplesmente sustentar uma determinada posição por valores estranhos, é preciso que ela esteja traduzida na linguagem dos dados.
+
+---
+class: center, middle
+
+# O que é Ciência de Dados?
+
+???
+
+- Tomar cuidado com o hype. Cloud computing. Machine Learning. Big Data.
+- Há muito debate. Usaremos o conceito mais amplo possível. Qualquer tipo de trabalho e interpretação de dados. Não necessariamente usando programação. Usar programação é, ao meu ver, a melhor maneira de se fazer data science.
+
+---
+class: inverse, middle, center
+# Não seria melhor simplesmente aprender Excel?
+
+???
+
+# Problemas de se aprender Excel exclusivamente:
+
+1. Estamos limitados ao GUI. Todo o trabalho é se adaptar à interface. Não dá pra fazer nada além disso.
+2. Não dá pra saber o que foi feito. Não há como recuperar o processo de construção da base de dados.
+3. Perda de reprodutibilidade.
+
+--
+
+.center[![no](https://media4.giphy.com/media/TfS8MAR9ucLHW/giphy.gif)]
+
+---
+
+# Vantagens da programação:
+
+--
+
+.center[
+.texto[Código é texto]
+]
+
+---
+
+# Vantagens da programação
+
+## Códigos são:
+
+--
+
+- Compartilháveis
+
+--
+
+- Reproduzíveis (princípio básico de qualquer ciência)
+
+--
+
+- Legíveis
+
+--
+
+- Abertos
+
+---
+
+# Vantagens da programação
+
+--
+
+1. Copiar e Colar
+
+--
+
+2. Usar o Google
+
+???
+
+Essas tecnologias podem parecer pouca coisa, mas são nada menos que revolucionárias. No entanto, eu vou pedir para vocês não usarem copiar e colar. Eu explico mais tarde o porquê.
+
+Outras vantagens:
+
+- habilidade cada vez mais relevante, tanto no nível pessoal quanto no nível profissional;
+
+- tendência de valorização com o passar do tempo;
+
+- em terra de cego..
+
+---
+class: center, middle, inverse
+
+# Não seria melhor aprender Python?
+
+--
+
+.center[![no](https://media4.giphy.com/media/TfS8MAR9ucLHW/giphy.gif)]
+
+???
+
+Resposta simples: confiem em mim. Para nossos objetivos, enquanto diplomatas, python não é melhor.
+
+Resposta longa: ela virá a seguir.
+
+
+---
+class: middle, center
+.center[
+```{r, echo = FALSE, out.height=300}
+knitr::include_graphics("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/R_logo.svg/1280px-R_logo.svg.png")
+```
+]
+
+???
 # R
 
 1. R é a melhor língua para nossos objetivos.
@@ -79,41 +193,34 @@ class: inverse
 4. o foco do R é ser um instrumento de análise para embasamento de decisões de organizações ou, no nosso caso, embasar políticas públicas.
 5. o Itamaraty, desde o fim da DIC, não possui divisão específica voltada à Ciência de Dados. Há uma oportunidade, baseada nos últimos avanços tecnológicos da ciência de dados. Nem TI, nem ciência da computação. Ciência de Dados.
 
-# política pública baseada em evidências
-
 ---
+class: middle, center
 
-# Quais as vantagens de um diplomata aprender a programar?
+# Como o R pode contribuir para o trabalho de um diplomata?
 
---
+???
+
+- subsídios: mostrar o RMarkdown;
+- retratoeconomico: mostrar o Shiy;
+- salarios: mostrar o webscraping;
+- salarios_app: mostrar o shiny;
+- onu: dados de pdfs;
+- antiguidade: dados de pdfs;
+
+Outras possibilidades..
 
 - Setor econômico: dados comerciais, tarifários, investimentos..
-
---
-
-- Setor político: análise de dados eleitorais;
-
---
-
+- Setor político: análise de dados eleitorais; (PolData)
 - Postos multilaterais: previsão de votações; orçamento da OI; histórico de decisões;
-
---
-
 - Setor administrativo: visualização do impacto de decisões orçamentárias no posto ou na SERE; controle de inventário; 
-
---
-
 - Setor de consular: controle de atendimentos; prestação de contas;
 
----
-class: center middle
 
-.center[![more](https://media4.giphy.com/media/l0Exdm9UbTHAFcJi0/giphy.gif)]
 
 ---
 class: center, middle, inverse
 
-## As oportunidades a quem sabe programar são proporcionais à falta de modernização do Itamaraty
+## Oportunidades proporcionais à falta de modernização do Itamaraty
 
 ???
 
@@ -132,7 +239,6 @@ Dar alguns exemplos sobre o que pode ser feito:
 - Preços de imóveis no exterior
 
 ---
-class: inverse
 
 # Conselhos para iniciantes em programação 
 
@@ -161,6 +267,8 @@ class: inverse
 
 - Programar é como aprender uma língua estrangeira (só se aprende praticando).
 
+- Tente não copiar e colar.
+
 ???
 
 - Learn The Hard Way. Estilo gambito da rainha. 
@@ -176,7 +284,9 @@ class: inverse
 
 ## Procure ajuda
 
-1. Google.
+1. Ler a Documentação!
+
+1. [Google](www.google.com)
 
 2. [Cheat Sheets do R Studio](https://rstudio.com/resources/cheatsheets/)
 
@@ -193,6 +303,7 @@ class: inverse
 ???
 
 É absolutamente fundamental saber onde procurar ajuda. Programar é basicamente saber usar o google.
+
 ---
 class: middle, center
 ```{r, echo = FALSE, out.width="90%"}
@@ -200,17 +311,23 @@ knitr::include_graphics("https://memegenerator.net/img/instances/67791412/not-su
 ```
 ---
 
-class: center, middle, inverse
+# O RStudio
 
-# Não seria melhor aprender Python?
+```{r echo=FALSE, fig.align='center', out.width=500, out.height=400}
 
-.center[![no](https://media4.giphy.com/media/TfS8MAR9ucLHW/giphy.gif)]
+knitr::include_graphics("images/rstudio-editor.png")
 
-???
+```
 
-Resposta simples: confiem em mim. Para nossos objetivos, enquanto diplomatas, python não é melhor.
+---
 
-Resposta longa: ela virá a seguir.
+# Primeiras Linhas de Código
+
+## O R como Calculadora
+
+(vamos ao R!)
+
+.center[![coding](https://media3.giphy.com/media/hrRJ41JB2zlgZiYcCw/giphy-downsized.gif)]
 
 ---
 
@@ -225,19 +342,21 @@ knitr::include_graphics("images/hadley.jpg")
 ```
 ]
 
----
-
-# Por que aprender R?
-
-Referências de livros:
-
 ???
 
-Os livros em R são de altíssima qualidade.
+- O material em R é de muito mais qualidade. Não precisa de vídeos de Youtube.
 
 ---
 
+## Comunidade
 
+- [R-Bloggers](https://www.r-bloggers.com/)
+- [R-Ladies Global](https://rladies.org/)
+- [R-Ladies SP](https://www.meetup.com/pt-BR/R-Ladies-Sao-Paulo/)
+- [Minas Programam](https://minasprogramam.com/quem-faz/)
+
+
+---
 # Por que aprender R?
 
 ```{r, echo = F}
@@ -266,6 +385,7 @@ knitr::include_graphics("images/tidyverse-default.png")
 - Uma gramática de dados.
 
 ---
+
 # Visão Panorâmica
 .center[
 ```{r, echo = F, out.width="80%"}
@@ -284,7 +404,19 @@ No início pode parecer overwhelming, mas vocês vão ver como isso não é tão
 
 ---
 
-# O que é o formato "Tidy"?
+# Visão Panorâmica
+.center[
+```{r, echo = F, out.width="80%"}
+knitr::include_graphics("images/fluxo_de_trabalho.png")
+```
+]
+.footnote[imagem retirada de [apresentação](https://curso-r.github.io/main-intro-programacao/slides/01-introducao-ao-curso.html#26) do Curso-R
+]
+
+---
+
+# O que é o formato "Tidy"? 
+
 
 ```{r, echo = F}
 knitr::include_graphics("images/tidydata_1.jpg")
@@ -311,6 +443,7 @@ comerciobr::sh1_df %>%
   
 ```
 ---
+
 # Tabela em formato não Tidy
 
 ```{r, echo = F, warning = F, message = F}
@@ -329,7 +462,7 @@ comerciobr::sh1_df %>%
 
 # Vantagens de se usar tabelas em formato "tidy"
 
-## Padronização de Ferramantas
+- Padronização de Ferramantas
 
 ```{r, echo = F}
 
@@ -340,51 +473,48 @@ knitr::include_graphics("images/tidydata_3.jpg")
 ???
 
 Este conceito pode ser utilizado em praticamente qualquer tabela. Com qualquer tipo de informação.
----
-
-# Vantagens de se usar tabelas em formato "tidy"
-
-- Padronização de Ferramantas
-
-```{r, echo = F}
-
-knitr::include_graphics("images/tidydata_3.jpg")
-
-```
 
 ---
 
 # Vantagens de se usar tabelas em formato "tidy"
-
---
 
 - Compartilhamento
 
+--
+
 - Automatização
 
----
+--
 
-# O RStudio
-
-```{r echo=FALSE, fig.align='center', out.width=500, out.height=400}
-
-knitr::include_graphics("images/rstudio-editor.png")
-
-```
+- Padronização
 
 ---
 
 # Pacotes
 
+## Unidade básica de compartilhamento de funcionalidades.
 
+- Intalação de pacotes:
 
---- 
+```{r}
+# install.packages("tidyverse")
+```
+
+--
+
+- uso de pacotes:
+
+```{r}
+# library(tidyverse)
+```
+
+---
 
 # Visualização de dados
 
 ```{r echo=FALSE, fig.align='center', out.width=400, out.height=400}
 
-knitr::include_graphics("images/ggplot2.jpg")
+knitr::include_graphics("images/ggplot2.png")
 
 ```
 
@@ -399,6 +529,54 @@ knitr::include_graphics("images/ggplot2.jpg")
 knitr::include_graphics("images/ggplot_grammar.png")
 
 ```
+
+```{r}
+# # httr::GET("https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncm/EXP_2020.csv", httr::write_disk(here::here("aulas/aula1_introducao/dados/exp_2020.csv"), overwrite = T), config = httr::config(ssl_verifypeer = FALSE))
+# 
+# # httr::GET("https://balanca.economia.gov.br/balanca/bd/tabelas/NCM_SH.csv", httr::write_disk(here::here("aulas/aula1_introducao/dados/sh.csv"), overwrite = T), config = httr::config(ssl_verifypeer = FALSE))
+# # 
+# # httr::GET("https://balanca.economia.gov.br/balanca/bd/tabelas/NCM.csv", httr::write_disk(here::here("aulas/aula1_introducao/dados/ncm_sh.csv"), overwrite = T), config = httr::config(ssl_verifypeer = FALSE))
+# 
+# exp <- vroom::vroom(here::here("aulas/aula1_introducao/dados/exp_2020.csv")) %>% 
+#   janitor::clean_names() %>% 
+#   select(-c(co_unid, co_via, co_urf, qt_estat))
+# 
+# ncm_sh <- vroom::vroom(here::here("aulas/aula1_introducao/dados/ncm_sh.csv"), locale = locale(encoding = "ISO-8859-1")) %>% 
+#   janitor::clean_names()
+# 
+# sh <- vroom::vroom(here::here("aulas/aula1_introducao/dados/sh.csv"), locale = locale(encoding = "ISO-8859-1")) %>% 
+#   janitor::clean_names()
+# 
+# ncm_sh <- ncm_sh %>% 
+#   select(co_ncm, co_sh6, co_fat_agreg, no_ncm_por)
+# 
+# exp <- exp %>% 
+#   left_join(ncm_sh)
+# 
+# exp_china <- exp %>% 
+#   filter(co_pais == "160")
+# 
+# 
+# exp_china %>% 
+#   group_by(co_sh6, sg_uf_ncm, co_fat_agreg) %>%
+#   summarise(value = sum(vl_fob),
+#             value_kg = sum(kg_liquido)) %>% 
+#   group_by(co_sh6) %>% 
+#   mutate(sum_sh6 = sum(value)) %>% 
+#   arrange(desc(sum_sh6)) %>% 
+#   ungroup()
+#   # group_by(co_sh6) %>% 
+#   slice_max(order_by = sum_sh6, n = 10)
+# 
+# 
+#   pull(co_sh6)
+#   ggplot() +
+#   geom_col(aes(vl_fob, kg_liquido, color = co_sh6))
+#   facet_wrap(~ co_fat_agreg)
+
+
+```
+
 
 --
 
@@ -439,579 +617,3 @@ Três funções:
 - otras cositas más 
 
 ---
-
-# Hello World
-
-Install the **xaringan** package from [Github](https://github.com/yihui/xaringan):
-
-```{r eval=FALSE, tidy=FALSE}
-devtools::install_github("yihui/xaringan")
-```
-
---
-
-You are recommended to use the [RStudio IDE](https://www.rstudio.com/products/rstudio/), but you do not have to.
-
-- Create a new R Markdown document from the menu `File -> New File -> R Markdown -> From Template -> Ninja Presentation`;<sup>1</sup>
-
---
-
-- Click the `Knit` button to compile it;
-
---
-
-- or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)<sup>2</sup> "Infinite Moon Reader" to live preview the slides (every time you update and save the Rmd document, the slides will be automatically reloaded in RStudio Viewer.
-
-.footnote[
-[1] 中文用户请看[这份教程](https://slides.yihui.org/xaringan/zh-CN.html)
-
-[2] See [#2](https://github.com/yihui/xaringan/issues/2) if you do not see the template or addin in RStudio.
-]
-
----
-background-image: url(`r xaringan:::karl`)
-background-position: 50% 50%
-class: center, bottom, inverse
-
-# You only live once!
-
----
-
-# Hello Ninja
-
-As a presentation ninja, you certainly should not be satisfied by the "Hello World" example. You need to understand more about two things:
-
-1. The [remark.js](https://remarkjs.com) library;
-
-1. The **xaringan** package;
-
-Basically **xaringan** injected the chakra of R Markdown (minus Pandoc) into **remark.js**. The slides are rendered by remark.js in the web browser, and the Markdown source needed by remark.js is generated from R Markdown (**knitr**).
-
----
-
-# remark.js
-
-You can see an introduction of remark.js from [its homepage](https://remarkjs.com). You should read the [remark.js Wiki](https://github.com/gnab/remark/wiki) at least once to know how to
-
-- create a new slide (Markdown syntax<sup>*</sup> and slide properties);
-
-- format a slide (e.g. text alignment);
-
-- configure the slideshow;
-
-- and use the presentation (keyboard shortcuts).
-
-It is important to be familiar with remark.js before you can understand the options in **xaringan**.
-
-.footnote[[*] It is different with Pandoc's Markdown! It is limited but should be enough for presentation purposes. Come on... You do not need a slide for the Table of Contents! Well, the Markdown support in remark.js [may be improved](https://github.com/gnab/remark/issues/142) in the future.]
-
----
-background-image: url(`r xaringan:::karl`)
-background-size: cover
-class: center, bottom, inverse
-
-# I was so happy to have discovered remark.js!
-
----
-class: inverse, middle, center
-
-# Using xaringan
-
----
-
-# xaringan
-
-Provides an R Markdown output format `xaringan::moon_reader` as a wrapper for remark.js, and you can use it in the YAML metadata, e.g.
-
-```yaml
----
-title: "A Cool Presentation"
-output:
-  xaringan::moon_reader:
-    yolo: true
-    nature:
-      autoplay: 30000
----
-```
-
-See the help page `?xaringan::moon_reader` for all possible options that you can use.
-
----
-
-# remark.js vs xaringan
-
-Some differences between using remark.js (left) and using **xaringan** (right):
-
-.pull-left[
-1. Start with a boilerplate HTML file;
-
-1. Plain Markdown;
-
-1. Write JavaScript to autoplay slides;
-
-1. Manually configure MathJax;
-
-1. Highlight code with `*`;
-
-1. Edit Markdown source and refresh browser to see updated slides;
-]
-
-.pull-right[
-1. Start with an R Markdown document;
-
-1. R Markdown (can embed R/other code chunks);
-
-1. Provide an option `autoplay`;
-
-1. MathJax just works;<sup>*</sup>
-
-1. Highlight code with `{{}}`;
-
-1. The RStudio addin "Infinite Moon Reader" automatically refreshes slides on changes;
-]
-
-.footnote[[*] Not really. See next page.]
-
----
-
-# Math Expressions
-
-You can write LaTeX math expressions inside a pair of dollar signs, e.g. &#36;\alpha+\beta$ renders $\alpha+\beta$. You can use the display style with double dollar signs:
-
-```
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-```
-
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-
-Limitations:
-
-1. The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character, and the ending `$$` must be at the end of a line, led by a non-space character;
-
-1. There should not be spaces after the opening `$` or before the closing `$`.
-
-1. Math does not work on the title slide (see [#61](https://github.com/yihui/xaringan/issues/61) for a workaround).
-
----
-
-# R Code
-
-```{r comment='#'}
-# a boring regression
-fit = lm(dist ~ 1 + speed, data = cars)
-coef(summary(fit))
-dojutsu = c('地爆天星', '天照', '加具土命', '神威', '須佐能乎', '無限月読')
-grep('天', dojutsu, value = TRUE)
-```
-
----
-
-<!-- # R Plots -->
-
-<!-- ```{r cars, fig.height=4, dev='svg'} -->
-<!-- par(mar = c(4, 4, 1, .1)) -->
-<!-- plot(cars, pch = 19, col = 'darkgray', las = 1) -->
-<!-- abline(fit, lwd = 2) -->
-<!-- ``` -->
-
----
-
-# Tables
-
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
-
-```{r}
-knitr::kable(head(iris), format = 'html')
-```
-
----
-
-# HTML Widgets
-
-I have not thoroughly tested HTML widgets against **xaringan**. Some may work well, and some may not. It is a little tricky.
-
-Similarly, the Shiny mode (`runtime: shiny`) does not work. I might get these issues fixed in the future, but these are not of high priority to me. I never turn my presentation into a Shiny app. When I need to demonstrate more complicated examples, I just launch them separately. It is convenient to share slides with other people when they are plain HTML/JS applications.
-
-See the next page for two HTML widgets.
-
----
-
-```{r out.width='100%', fig.height=6, eval=require('leaflet')}
-library(leaflet)
-leaflet() %>% addTiles() %>% setView(-93.65, 42.0285, zoom = 17)
-```
-
----
-
-```{r eval=require('DT'), tidy=FALSE}
-DT::datatable(
-  head(iris, 10),
-  fillContainer = FALSE, options = list(pageLength = 8)
-)
-```
-
----
-
-# Some Tips
-
-- Do not forget to try the `yolo` option of `xaringan::moon_reader`.
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        yolo: true
-    ```
-
----
-
-# Some Tips
-
-- Slides can be automatically played if you set the `autoplay` option under `nature`, e.g. go to the next slide every 30 seconds in a lightning talk:
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          autoplay: 30000
-    ```
-
-- If you want to restart the play after it reaches the last slide, you may set the sub-option `loop` to TRUE, e.g.,
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          autoplay:
-            interval: 30000
-            loop: true
-    ```
-
----
-
-# Some Tips
-
-- A countdown timer can be added to every page of the slides using the `countdown` option under `nature`, e.g. if you want to spend one minute on every page when you give the talk, you can set:
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          countdown: 60000
-    ```
-
-    Then you will see a timer counting down from `01:00`, to `00:59`, `00:58`, ... When the time is out, the timer will continue but the time turns red.
-    
----
-
-# Some Tips
-
-- The title slide is created automatically by **xaringan**, but it is just another remark.js slide added before your other slides.
-
-    The title slide is set to `class: center, middle, inverse, title-slide` by default. You can change the classes applied to the title slide with the `titleSlideClass` option of `nature` (`title-slide` is always applied).
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          titleSlideClass: [top, left, inverse]
-    ```
-    
---
-
-- If you'd like to create your own title slide, disable **xaringan**'s title slide with the `seal = FALSE` option of `moon_reader`.
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        seal: false
-    ```
-
----
-
-# Some Tips
-
-- There are several ways to build incremental slides. See [this presentation](https://slides.yihui.org/xaringan/incremental.html) for examples.
-
-- The option `highlightLines: true` of `nature` will highlight code lines that start with `*`, or are wrapped in `{{ }}`, or have trailing comments `#<<`;
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          highlightLines: true
-    ```
-
-    See examples on the next page.
-
----
-
-# Some Tips
-
-
-.pull-left[
-An example using a leading `*`:
-
-    ```r
-    if (TRUE) {
-    ** message("Very important!")
-    }
-    ```
-Output:
-```r
-if (TRUE) {
-* message("Very important!")
-}
-```
-
-This is invalid R code, so it is a plain fenced code block that is not executed.
-]
-
-.pull-right[
-An example using `{{}}`:
-
-````
-`r ''````{r tidy=FALSE}
-if (TRUE) {
-*{{ message("Very important!") }}
-}
-```
-````
-Output:
-```{r tidy=FALSE}
-if (TRUE) {
-{{ message("Very important!") }}
-}
-```
-
-It is valid R code so you can run it. Note that `{{}}` can wrap an R expression of multiple lines.
-]
-
----
-
-# Some Tips
-
-An example of using the trailing comment `#<<` to highlight lines:
-
-````markdown
-`r ''````{r tidy=FALSE}
-library(ggplot2)
-ggplot(mtcars) + 
-  aes(mpg, disp) + 
-  geom_point() +   #<<
-  geom_smooth()    #<<
-```
-````
-
-Output:
-
-```{r tidy=FALSE, eval=FALSE}
-library(ggplot2)
-ggplot(mtcars) + 
-  aes(mpg, disp) + 
-  geom_point() +   #<<
-  geom_smooth()    #<<
-```
-
----
-
-# Some Tips
-
-When you enable line-highlighting, you can also use the chunk option `highlight.output` to highlight specific lines of the text output from a code chunk. For example, `highlight.output = TRUE` means highlighting all lines, and `highlight.output = c(1, 3)` means highlighting the first and third line.
-
-````md
-`r ''````{r, highlight.output=c(1, 3)}
-head(iris)
-```
-````
-
-```{r, highlight.output=c(1, 3), echo=FALSE}
-head(iris)
-```
-
-Question: what does `highlight.output = c(TRUE, FALSE)` mean? (Hint: think about R's recycling of vectors)
-
----
-
-# Some Tips
-
-- To make slides work offline, you need to download a copy of remark.js in advance, because **xaringan** uses the online version by default (see the help page `?xaringan::moon_reader`).
-
-- You can use `xaringan::summon_remark()` to download the latest or a specified version of remark.js. By default, it is downloaded to `libs/remark-latest.min.js`.
-
-- Then change the `chakra` option in YAML to point to this file, e.g.
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        chakra: libs/remark-latest.min.js
-    ```
-
-- If you used Google fonts in slides (the default theme uses _Yanone Kaffeesatz_, _Droid Serif_, and _Source Code Pro_), they won't work offline unless you download or install them locally. The Heroku app [google-webfonts-helper](https://google-webfonts-helper.herokuapp.com/fonts) can help you download fonts and generate the necessary CSS.
-
----
-
-# Macros
-
-- remark.js [allows users to define custom macros](https://github.com/yihui/xaringan/issues/80) (JS functions) that can be applied to Markdown text using the syntax `![:macroName arg1, arg2, ...]` or `![:macroName arg1, arg2, ...](this)`. For example, before remark.js initializes the slides, you can define a macro named `scale`:
-
-    ```js
-    remark.macros.scale = function (percentage) {
-      var url = this;
-      return '<img src="' + url + '" style="width: ' + percentage + '" />';
-    };
-    ```
-
-    Then the Markdown text
-
-    ```markdown
-    ![:scale 50%](image.jpg)
-    ```
-
-    will be translated to
-    
-    ```html
-    <img src="image.jpg" style="width: 50%" />
-    ```
-
----
-
-# Macros (continued)
-
-- To insert macros in **xaringan** slides, you can use the option `beforeInit` under the option `nature`, e.g.,
-
-    ```yaml
-    output:
-      xaringan::moon_reader:
-        nature:
-          beforeInit: "macros.js"
-    ```
-
-    You save your remark.js macros in the file `macros.js`.
-
-- The `beforeInit` option can be used to insert arbitrary JS code before `remark.create()`. Inserting macros is just one of its possible applications.
-
----
-
-# CSS
-
-Among all options in `xaringan::moon_reader`, the most challenging but perhaps also the most rewarding one is `css`, because it allows you to customize the appearance of your slides using any CSS rules or hacks you know.
-
-You can see the default CSS file [here](https://github.com/yihui/xaringan/blob/master/inst/rmarkdown/templates/xaringan/resources/default.css). You can completely replace it with your own CSS files, or define new rules to override the default. See the help page `?xaringan::moon_reader` for more information.
-
----
-
-# CSS
-
-For example, suppose you want to change the font for code from the default "Source Code Pro" to "Ubuntu Mono". You can create a CSS file named, say, `ubuntu-mono.css`:
-
-```css
-@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-.remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-```
-
-Then set the `css` option in the YAML metadata:
-
-```yaml
-output:
-  xaringan::moon_reader:
-    css: ["default", "ubuntu-mono.css"]
-```
-
-Here I assume `ubuntu-mono.css` is under the same directory as your Rmd.
-
-See [yihui/xaringan#83](https://github.com/yihui/xaringan/issues/83) for an example of using the [Fira Code](https://github.com/tonsky/FiraCode) font, which supports ligatures in program code.
-
----
-
-# Themes
-
-Don't want to learn CSS? Okay, you can use some user-contributed themes. A theme typically consists of two CSS files `foo.css` and `foo-fonts.css`, where `foo` is the theme name. Below are some existing themes:
-
-```{r, R.options=list(width = 70)}
-names(xaringan:::list_css())
-```
-
----
-
-# Themes
-
-To use a theme, you can specify the `css` option as an array of CSS filenames (without the `.css` extensions), e.g.,
-
-```yaml
-output:
-  xaringan::moon_reader:
-    css: [default, metropolis, metropolis-fonts]
-```
-
-If you want to contribute a theme to **xaringan**, please read [this blog post](https://yihui.org/en/2017/10/xaringan-themes).
-
----
-class: inverse, middle, center
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/39/Naruto_Shiki_Fujin.svg)
-background-size: contain
-
-# Naruto
-
----
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
-background-size: 100px
-background-position: 90% 8%
-
-# Sharingan
-
-The R package name **xaringan** was derived<sup>1</sup> from **Sharingan**, a dōjutsu in the Japanese anime _Naruto_ with two abilities:
-
-- the "Eye of Insight"
-
-- the "Eye of Hypnotism"
-
-I think a presentation is basically a way to communicate insights to the audience, and a great presentation may even "hypnotize" the audience.<sup>2,3</sup>
-
-.footnote[
-[1] In Chinese, the pronounciation of _X_ is _Sh_ /ʃ/ (as in _shrimp_). Now you should have a better idea of how to pronounce my last name _Xie_.
-
-[2] By comparison, bad presentations only put the audience to sleep.
-
-[3] Personally I find that setting background images for slides is a killer feature of remark.js. It is an effective way to bring visual impact into your presentations.
-]
-
----
-
-# Naruto terminology
-
-The **xaringan** package borrowed a few terms from Naruto, such as
-
-- [Sharingan](https://naruto.fandom.com/wiki/Sharingan) (写輪眼; the package name)
-
-- The [moon reader](https://naruto.fandom.com/wiki/Moon_Reader) (月読; an attractive R Markdown output format)
-
-- [Chakra](https://naruto.fandom.com/wiki/Chakra) (查克拉; the path to the remark.js library, which is the power to drive the presentation)
-
-- [Nature transformation](https://naruto.fandom.com/wiki/Nature_Transformation) (性質変化; transform the chakra by setting different options)
-
-- The [infinite moon reader](https://naruto.fandom.com/wiki/Infinite_Tsukuyomi) (無限月読; start a local web server to continuously serve your slides)
-
-- The [summoning technique](https://naruto.fandom.com/wiki/Summoning_Technique) (download remark.js from the web)
-
-You can click the links to know more about them if you want. The jutsu "Moon Reader" may seem a little evil, but that does not mean your slides are evil.
-
----
-
-class: center
-
-# Hand seals (印)
-
-Press `h` or `?` to see the possible ninjutsu you can use in remark.js.
-
-![](https://upload.wikimedia.org/wikipedia/commons/7/7e/Mudra-Naruto-KageBunshin.svg)
-
----
-
-class: center, middle
-
-# Thanks!
-
-Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
-
-The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](https://yihui.org/knitr), and [R Markdown](https://rmarkdown.rstudio.com).

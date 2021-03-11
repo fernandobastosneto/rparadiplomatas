@@ -13,12 +13,12 @@ Repositório de materiais, exercícios e referências do curso R para Diplomatas
 
 |Semana | Aula | Slides | Exercícios |
 |--------|-----------|----|----|
-| 1 | Introdução e Primeira Visualização |  material | Exercicios |
-| 2 | Transformação de Dados I | material | Exercicios |
-| 3 | Transformação de Dados II | material | Exercicios |
-| 4 | Tabelas, Strings e Datas | material | Exercicios |
-| 5 | Construindo Relatórios | material | Exercicios |
-| 6 | Webscraping, Programação Funcional e além | material| Exercicios |
+| 12 de março | Introdução e Primeira Visualização |  slides | [material](https://github.com/fernandobastosneto/rparadiplomatas_aula1/archive/master.zip) |
+| 19 de março | Transformação de Dados I | slides | material |
+| 26 de março | Transformação de Dados II | slides | material |
+| 9 de abril  | Tabelas, Strings e Datas | slides | material |
+| 16 de abril | Construindo Relatórios | slides | material |
+| 23 de abril | Webscraping, Programação Funcional e além | slides | material |
 
 ## Materiais de Referência
 
@@ -28,4 +28,5 @@ Repositório de materiais, exercícios e referências do curso R para Diplomatas
 - [RStudio Cheat Sheets](https://rstudio.com/resources/cheatsheets/)
 - [Data Visualization, a Pratical Introduction](https://socviz.co/)
 - [Hands on Programming with R](https://rstudio-education.github.io/hopr/)
+- [Swirl](https://swirlstats.com/students.html)
 
